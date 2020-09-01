@@ -4,11 +4,11 @@ using namespace Bolin;
 
 TestEntity::TestEntity(): Entity("name"), _rotationSpeed(0) {
 	RenderBody r = RenderBody();
-	r.Fill = false;
-	r.Vertices.push_back(Vector2(-1, 0));
-	r.Vertices.push_back(Vector2(0, 1));
-	r.Vertices.push_back(Vector2(1, 0));
-	r.Vertices.push_back(Vector2(0, -1));
+	r.Fill = true;
+	r.Vertices.push_back(Vector2(-4, 0));
+	r.Vertices.push_back(Vector2(0, 4));
+	r.Vertices.push_back(Vector2(4, 0));
+	r.Vertices.push_back(Vector2(0, -4));
 	_body = r;
 }
 

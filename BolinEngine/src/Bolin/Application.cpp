@@ -8,6 +8,8 @@ namespace Bolin {
 		_window = new Window(width, height, windowName, cam);
 
 		LOG("Startup");
+
+		Run();
 	}
 	Application::~Application() {
 		delete _currentLevel;
@@ -24,6 +26,9 @@ namespace Bolin {
 	}
 
 	void Application::Run() {
+
+		LOG("Running application");
+
 		long lastMillis = Utility::GetMilliseconds();
 		int cycleMs = 1000 / _renderFps;
 		while (!_halt) {
@@ -43,6 +48,8 @@ namespace Bolin {
 			_window->PollEvents();
 			_halt = _window->ShouldClose();
 		}
+
+		LOG("Application loop closing");
 	}
 
 	void Application::Tick() {

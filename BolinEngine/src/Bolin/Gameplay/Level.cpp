@@ -9,7 +9,8 @@ namespace Bolin {
 	Level::Level(std::string levelName): _levelName(levelName) { }
 	Level::~Level() {
 		for (int i = 0; i < _entities.size(); i++) {
-			delete _entities.at(i);
+			if (_entities.at(i) != nullptr)
+				delete _entities.at(i);
 		}
 	}
 
@@ -55,10 +56,13 @@ namespace Bolin {
 		std::vector<Entity*>& entities = GetEntities();
 		RenderBody body;
 		for (int i = 0; i < entities.size(); i++) {
-			// LOG("Drawing entity");
+			LOG("Drawing entity");
 			Entity* ent = entities.at(i);
 			body = ent->GetBody();
 			std::vector<Point> points = GetDrawablePoints(ent->Position, ent->Rotation, body.Vertices, window);
+			for (Point p : points) {
+				LOG("(" << p.X << ", " << p.Y << ")");
+			}
 			window->DrawPolygon(points, body.Fill);
 		}
 	}
